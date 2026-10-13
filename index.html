@@ -1,130 +1,155 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAMR - Força Armada Militar Revolucionária</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="login-page">
-    <div class="login-container">
-        <div class="login-box">
-            <!-- Logo -->
-            <div class="logo-section text-center mb-4">
-                <img src="https://raw.githubusercontent.com/[SEU_USUARIO]/famrlogo/main/famrlogo.png" alt="FAMR Logo" class="login-logo">
-                <h1 class="famr-title mt-3">Força Armada Militar Revolucionária</h1>
-                <p class="famr-subtitle">Sistema de Gestão Operacional</p>
-            </div>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#102719">
+    <title>FAMR | Portal Militar</title>
 
-            <!-- Abas de Login/Registro -->
-            <ul class="nav nav-tabs mb-4" id="loginTabs">
-                <li class="nav-item">
-                    <a class="nav-link active" id="login-tab" data-bs-toggle="tab" href="#login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="register-tab" data-bs-toggle="tab" href="#register">Registrar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="recover-tab" data-bs-toggle="tab" href="#recover">Recuperar Senha</a>
-                </li>
-            </ul>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
 
-            <!-- Conteúdo das Abas -->
-            <div class="tab-content">
-                <!-- Login -->
-                <div class="tab-pane fade show active" id="login">
-                    <form id="loginForm" class="needs-validation">
-                        <div class="mb-3">
-                            <label for="loginUsername" class="form-label">Nickname</label>
-                            <input type="text" class="form-control" id="loginUsername" placeholder="Digite seu nickname" required>
-                            <div class="invalid-feedback">Por favor, insira seu nickname.</div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="loginPassword" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="loginPassword" placeholder="Digite sua senha" required>
-                            <div class="invalid-feedback">Por favor, insira sua senha.</div>
-                        </div>
-
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="rememberLogin">
-                            <label class="form-check-label" for="rememberLogin">Lembrar-me</label>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary w-100 btn-famr">Entrar</button>
-
-                        <div id="loginError" class="alert alert-danger mt-3" style="display:none;"></div>
-                        <div id="loginSuccess" class="alert alert-success mt-3" style="display:none;"></div>
-                    </form>
-                </div>
-
-                <!-- Registro -->
-                <div class="tab-pane fade" id="register">
-                    <form id="registerForm" class="needs-validation">
-                        <div class="mb-3">
-                            <label for="registerUsername" class="form-label">Nickname</label>
-                            <input type="text" class="form-control" id="registerUsername" placeholder="Escolha seu nickname" required>
-                            <small class="form-text text-muted">Mínimo 3, máximo 20 caracteres</small>
-                            <div class="invalid-feedback">Nickname inválido.</div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="registerEmail" class="form-label">E-mail</label>
-                            <input type="email" class="form-control" id="registerEmail" placeholder="seu@email.com" required>
-                            <div class="invalid-feedback">E-mail inválido.</div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="registerPassword" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="registerPassword" placeholder="Crie uma senha forte" required>
-                            <small class="form-text text-muted">Mínimo 8 caracteres, letras e números</small>
-                            <div class="invalid-feedback">Senha deve ter no mínimo 8 caracteres.</div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="registerPasswordConfirm" class="form-label">Confirmar Senha</label>
-                            <input type="password" class="form-control" id="registerPasswordConfirm" placeholder="Confirme sua senha" required>
-                            <div class="invalid-feedback">As senhas não coincidem.</div>
-                        </div>
-
-                        <button type="submit" class="btn btn-success w-100 btn-famr">Registrar</button>
-
-                        <div id="registerError" class="alert alert-danger mt-3" style="display:none;"></div>
-                        <div id="registerSuccess" class="alert alert-success mt-3" style="display:none;"></div>
-                    </form>
-                </div>
-
-                <!-- Recuperação de Senha -->
-                <div class="tab-pane fade" id="recover">
-                    <form id="recoverForm" class="needs-validation">
-                        <div class="mb-3">
-                            <label for="recoverUsername" class="form-label">Nickname</label>
-                            <input type="text" class="form-control" id="recoverUsername" placeholder="Digite seu nickname" required>
-                            <div class="invalid-feedback">Por favor, insira seu nickname.</div>
-                        </div>
-
-                        <p class="small text-muted">Enviaremos um link de redefinição para seu e-mail cadastrado. O link expirará em 10 minutos.</p>
-
-                        <button type="submit" class="btn btn-warning w-100 btn-famr">Enviar Link de Redefinição</button>
-
-                        <div id="recoverError" class="alert alert-danger mt-3" style="display:none;"></div>
-                        <div id="recoverSuccess" class="alert alert-success mt-3" style="display:none;"></div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="login-footer text-center mt-4">
-                <p class="text-muted small">© 2026 FAMR - Força Armada Militar Revolucionária</p>
-                <p class="text-muted small">Sistema de Gestão Operacional v1.0</p>
-            </div>
+  <body>
+    <div class="login-screen" id="loginScreen">
+      <div class="login-art">
+        <div class="login-brand">
+          <img src="famrlogo.png" alt="Emblema FAMR" onerror="this.style.display='none'">
+          <div>
+            <span>FORÇA ARMADA MILITAR</span>
+            <strong>REVOLUCIONÁRIA</strong>
+            <small>DISCIPLINA · HONRA · SERVIÇO</small>
+          </div>
         </div>
+        <div class="art-caption">PORTAL INSTITUCIONAL · FAMR</div>
+      </div>
+
+      <section class="login-side">
+        <div class="login-box">
+          <img class="mobile-crest" src="famrlogo.png" alt="Emblema FAMR">
+          <div class="eyebrow">SISTEMA DE GESTÃO INTERNA</div>
+          <h1>ACESSO MILITAR</h1>
+          <p class="muted">Entre com seu nickname e senha cadastrados.</p>
+
+          <form id="loginForm">
+            <label>Nickname Habbo</label>
+            <input
+              id="loginNickname"
+              type="text"
+              autocomplete="username"
+              autocapitalize="none"
+              required
+              placeholder="Seu nickname"
+            >
+
+            <label>Senha</label>
+            <input
+              id="loginPassword"
+              type="password"
+              autocomplete="current-password"
+              required
+              placeholder="Sua senha"
+            >
+
+            <button class="btn primary full">Entrar no sistema</button>
+          </form>
+
+          <div class="login-links">
+            <button class="text-button" id="forgotButton">Esqueci minha senha</button>
+            <button class="text-button" id="registerButton">Solicitar cadastro</button>
+          </div>
+
+          <div class="notice" id="loginNotice" aria-live="polite"></div>
+          <div class="security-note">◆ ACESSO PROTEGIDO · FAMR</div>
+        </div>
+      </section>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="app hidden" id="appShell">
+      <aside class="sidebar" id="sidebar">
+        <div class="side-brand">
+          <img src="famrlogo.png" alt="">
+          <span>FAMR<small>PORTAL MILITAR</small></span>
+        </div>
+
+        <div class="side-profile">
+          <div class="avatar" id="sideAvatar">M</div>
+          <div>
+            <b id="sideName">Militar</b>
+            <small id="sideRole">Conta ativa</small>
+          </div>
+        </div>
+
+        <nav>
+          <div class="nav-caption">MENU PRINCIPAL</div>
+          <button class="nav-item active" data-page="home">⌂　Início</button>
+          <button class="nav-item" data-page="directory">▤　Listagem</button>
+          <button class="nav-item" data-page="requests">✉　Requerimentos</button>
+          <button class="nav-item" data-page="documents">▧　Documentos</button>
+          <button class="nav-item" data-page="companies">⚑　Companhias</button>
+
+          <div class="nav-caption spaced">PESSOAL</div>
+          <button class="nav-item" data-page="profile">◉　Meu perfil</button>
+          <button class="nav-item" data-page="groups">♙　Grupos</button>
+
+          <div id="adminNav" class="hidden">
+            <div class="nav-caption spaced">COMANDO</div>
+            <button class="nav-item" data-page="admin">⚙　Painel administrativo</button>
+          </div>
+        </nav>
+
+        <div class="side-bottom">
+          <div class="connection">
+            <i></i>
+            <span id="connectionText">Modo demonstração</span>
+          </div>
+          <button class="nav-item" id="logoutButton">↪　Sair do sistema</button>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <button class="mobile-menu" id="menuButton">☰</button>
+          <div class="crumb">FAMR　/　<b id="pageCrumb">Início</b></div>
+
+          <div class="top-actions">
+            <label class="search">
+              ⌕
+              <input id="globalSearch" placeholder="Buscar militar..." aria-label="Buscar militar">
+            </label>
+            <button class="user-chip" id="profileShortcut">
+              <span class="avatar small" id="topAvatar">M</span>
+              <span id="topName">Militar</span>
+            </button>
+          </div>
+        </header>
+
+        <div class="content" id="pageContent"></div>
+
+        <footer>© <span id="year"></span> FAMR · Portal Institucional</footer>
+      </main>
+    </div>
+
+    <dialog id="modal">
+      <div class="modal-head">
+        <div>
+          <span class="eyebrow" id="modalEyebrow">FAMR</span>
+          <h2 id="modalTitle">Ação</h2>
+        </div>
+        <button class="icon-button" id="closeModal">×</button>
+      </div>
+      <div id="modalBody"></div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
+
+
